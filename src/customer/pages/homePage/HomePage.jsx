@@ -6,7 +6,12 @@ const HomePage = () => {
   return (
     <div>
       <MainCarosel />
-      <div>
+      <div className="space-y-1 py-20">
+        <HomeSectionCarosel />
+        <HomeSectionCarosel />
+        <HomeSectionCarosel />
+        <HomeSectionCarosel />
+        <HomeSectionCarosel />
         <HomeSectionCarosel />
       </div>
     </div>
