@@ -10,7 +10,9 @@ const responsive = {
   1024: { items: 5.5 },
 };
 
-const items = [1, 1, 1, 1, 1].map((item) => <HomeSectionCard />);
+const items = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item) => (
+  <HomeSectionCard />
+));
 const HomeSectionCarosel = () => {
   return (
     // <div className="px-4 lg:px-8 border">
@@ -23,6 +25,26 @@ const HomeSectionCarosel = () => {
           responsive={responsive}
           disableDotsControls
         />
+
+        <Button
+          variant="contained"
+          className="z-50 bg-white"
+          sx={{
+            position: "absolute",
+            top: "8rem",
+            left: "0rem",
+            transform: "translateX(-50%) rotate(-90deg)",
+            bgcolor: "white",
+          }}
+          aria-label="next">
+          <KeyboardArrowLeftIcon
+            sx={{
+              transform: "rotate(90deg)",
+              color: "black",
+            }}
+          />
+        </Button>
+
         <Button
           variant="contained"
           className="z-50 bg-white"
@@ -36,26 +58,7 @@ const HomeSectionCarosel = () => {
           aria-label="next">
           <KeyboardArrowLeftIcon
             sx={{
-              transform: "rotate(+90deg)",
-              color: "black",
-            }}
-          />
-        </Button>
-
-        <Button
-          variant="contained"
-          className="z-50 bg-white"
-          sx={{
-            position: "absolute",
-            top: "8rem",
-            left: "0rem",
-            transform: "translateX(50%) rotate(-90deg)",
-            bgcolor: "white",
-          }}
-          aria-label="next">
-          <KeyboardArrowLeftIcon
-            sx={{
-              transform: "rotate(+90deg)",
+              transform: "rotate(90deg)",
               color: "black",
             }}
           />
