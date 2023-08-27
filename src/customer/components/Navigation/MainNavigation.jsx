@@ -6,6 +6,9 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { deepPurple } from "@mui/material/colors";
+import { navigationData } from "./navigationData";
+import { Avatar } from "@mui/material";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -13,6 +16,32 @@ function classNames(...classes) {
 
 export default function MainNavigation() {
   const [open, setOpen] = useState(false);
+
+  // const [openAuthModel, setOpenAuthModel] = useState(false);
+  // const [anchorEl, setOpenAnchorEl] = useState(null);
+  // const openUserMenu = Boolean(anchorEl);
+  // const jwt = localStorage.getItem("jwt");
+
+  // const handleUserClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // }
+
+  // const handleCloseUserMenu = (event) => {
+  //   setAnchorEl(null);
+  // }
+
+  // const handleOpen = () => {
+  //   setOpenAuthModel(true);
+  // }
+
+  // const handleClose = () => {
+  //   setOpenAuthModel(false);
+  // }
+
+  // const handleCategoryClick = (category, section, item, close) => {
+  //   //  navigate(`/${category.id}/${section.id}/${item.id}`);
+  //   close();
+  // };
 
   return (
     <div className="bg-white">
@@ -55,7 +84,7 @@ export default function MainNavigation() {
                 <Tab.Group as="div" className="mt-2">
                   <div className="border-b border-gray-200">
                     <Tab.List className="-mb-px flex space-x-8 px-4">
-                      {naviga.categories.map((category) => (
+                      {navigationData.categories.map((category) => (
                         <Tab
                           key={category.name}
                           className={({ selected }) =>
@@ -72,7 +101,7 @@ export default function MainNavigation() {
                     </Tab.List>
                   </div>
                   <Tab.Panels as={Fragment}>
-                    {MainNavigation.categories.map((category) => (
+                    {navigationData.categories.map((category) => (
                       <Tab.Panel
                         key={category.name}
                         className="space-y-10 px-4 pb-8 pt-10">
@@ -132,7 +161,7 @@ export default function MainNavigation() {
                 </Tab.Group>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  {MainNavigation.pages.map((page) => (
+                  {navigationData.pages.map((page) => (
                     <div key={page.name} className="flow-root">
                       <a
                         href={page.href}
@@ -159,20 +188,6 @@ export default function MainNavigation() {
                     </a>
                   </div>
                 </div>
-
-                <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="/" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -180,40 +195,32 @@ export default function MainNavigation() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
-        </p>
-
-        <nav
-          aria-label="Top"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Top" className="mx-auto">
           <div className="border-b border-gray-200">
-            <div className="flex h-16 items-center">
+            <div className="flex h-16 items-center px-11">
               <button
                 type="button"
-                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
                 onClick={() => setOpen(true)}>
-                <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="/">
-                  <span className="sr-only">Your Company</span>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt=""
-                  />
-                </a>
+                <header className="py-4">
+                  <div className="container mx-auto text-center">
+                    <h2 className="text-2xl font-bold text-gray-700">
+                      StyleByPratham
+                    </h2>
+                  </div>
+                </header>
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
                 <div className="flex h-full space-x-8">
-                  {MainNavigation.categories.map((category) => (
+                  {navigationData.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       {({ open }) => (
                         <>
@@ -313,7 +320,7 @@ export default function MainNavigation() {
                     </Popover>
                   ))}
 
-                  {MainNavigation.pages.map((page) => (
+                  {navigationData.pages.map((page) => (
                     <a
                       key={page.name}
                       href={page.href}
@@ -326,6 +333,25 @@ export default function MainNavigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  {/* authencation User Implementation */}
+                  {
+                    <div>
+                      <Avatar
+                        className="text-white"
+                        //  onClick={handleUserClick}
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        sx={{
+                          bgColor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                        }}>
+                        {/* Authentication userName */}
+                        {/* {true.firstName[0].toUpperCase()} */}P
+                      </Avatar>
+                    </div>
+                  }
                   <a
                     href="/"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800">
@@ -336,20 +362,6 @@ export default function MainNavigation() {
                     href="/"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Create account
-                  </a>
-                </div>
-
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a
-                    href="/"
-                    className="flex items-center text-gray-700 hover:text-gray-800">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
                   </a>
                 </div>
 
@@ -372,7 +384,7 @@ export default function MainNavigation() {
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
+                      2
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
@@ -382,6 +394,7 @@ export default function MainNavigation() {
           </div>
         </nav>
       </header>
+      {/* <AuthModal handleClose={handleClose} open={openAuthModel}/> */}
     </div>
   );
 }
