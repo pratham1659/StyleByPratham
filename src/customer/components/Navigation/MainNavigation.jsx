@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { deepPurple } from "@mui/material/colors";
 import { navigationData } from "./navigationData";
-import { Avatar } from "@mui/material";
+import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,25 +18,25 @@ export default function MainNavigation() {
   const [open, setOpen] = useState(false);
 
   // const [openAuthModel, setOpenAuthModel] = useState(false);
-  // const [anchorEl, setOpenAnchorEl] = useState(null);
-  // const openUserMenu = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openUserMenu = Boolean(anchorEl);
   // const jwt = localStorage.getItem("jwt");
 
-  // const handleUserClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // }
+  const handleUserClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  // const handleCloseUserMenu = (event) => {
-  //   setAnchorEl(null);
-  // }
+  const handleCloseUserMenu = (event) => {
+    setAnchorEl(null);
+  };
 
   // const handleOpen = () => {
   //   setOpenAuthModel(true);
-  // }
+  // };
 
   // const handleClose = () => {
   //   setOpenAuthModel(false);
-  // }
+  // };
 
   // const handleCategoryClick = (category, section, item, close) => {
   //   //  navigate(`/${category.id}/${section.id}/${item.id}`);
@@ -222,7 +222,7 @@ export default function MainNavigation() {
                 <div className="flex h-full space-x-8">
                   {navigationData.categories.map((category) => (
                     <Popover key={category.name} className="flex">
-                      {({ open }) => (
+                      {({ open, close }) => (
                         <>
                           <div className="relative flex">
                             <Popover.Button
@@ -334,11 +334,11 @@ export default function MainNavigation() {
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {/* authencation User Implementation */}
-                  {
+                  {true ? (
                     <div>
                       <Avatar
                         className="text-white"
-                        //  onClick={handleUserClick}
+                        onClick={handleUserClick}
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
@@ -350,13 +350,29 @@ export default function MainNavigation() {
                         {/* Authentication userName */}
                         {/* {true.firstName[0].toUpperCase()} */}P
                       </Avatar>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+                        <MenuItem>My Orders</MenuItem>
+                        <MenuItem>Logout</MenuItem>
+                      </Menu>
                     </div>
-                  }
-                  <a
-                    href="/"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </a>
+                  ) : (
+                    <Button
+                      // onClick={handleOpen}
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      Sign In
+                    </Button>
+                  )}
+
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   <a
                     href="/"
