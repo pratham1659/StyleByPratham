@@ -6,7 +6,7 @@ import Products from "./customer/components/Product/Products";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <MainNavigation />
       <div>
         {/* <HomePage /> */}
