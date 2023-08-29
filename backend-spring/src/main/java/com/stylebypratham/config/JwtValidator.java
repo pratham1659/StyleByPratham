@@ -3,6 +3,7 @@ package com.stylebypratham.config;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,6 +36,7 @@ public class JwtValidator extends OncePerRequestFilter {
                 Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJwt(jwt).getBody();
 
                 String email = String.valueOf(claims.get("email"));
+
                 String authorities = String.valueOf(claims.get("authorities"));
 
                 List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
@@ -49,7 +51,7 @@ public class JwtValidator extends OncePerRequestFilter {
             }
         }
 
-        filterChain.doFilter();
+        filterChain.doFilter(request, response);
 
 
     }
