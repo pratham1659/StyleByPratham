@@ -8,7 +8,7 @@ export const color = [
   "Yellow",
 ];
 
-export const filterData = [
+export const filters = [
   {
     id: "color",
     name: "Color",
@@ -43,6 +43,20 @@ export const singleFilter = [
       { value: "999-1999", label: "₹999 To ₹1999" },
       { value: "1999-2999", label: "₹1999 To ₹2999" },
       { value: "2999-3999", label: "₹2999 To ₹3999" },
+    ],
+  },
+  {
+    id: "discount",
+    name: "Discount Range",
+    options: [
+      { value: "10", label: "10% and Above" },
+      { value: "20", label: "20% and Above" },
+      { value: "30", label: "30% and Above" },
+      { value: "40", label: "40% and Above" },
+      { value: "50", label: "50% and Above" },
+      { value: "60", label: "60% and Above" },
+      { value: "70", label: "70% and Above" },
+      { value: "80", label: "80% and Above" },
     ],
   },
   {

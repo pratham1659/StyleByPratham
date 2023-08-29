@@ -10,11 +10,18 @@ import {
 } from "@heroicons/react/20/solid";
 import { mens_clothing } from "../../../Data/mens_clothing";
 import ProductCard from "./ProductCard";
+import { filters, singleFilter } from "./filterData";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const sortOptions = [
-  // { name: "Most Popular", href: "#", current: true },
-  // { name: "Best Rating", href: "#", current: false },
-  // { name: "Newest", href: "#", current: false },
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
@@ -25,6 +32,41 @@ function classNames(...classes) {
 
 export default function Products() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleFilter = (value, sectionId) => {
+    const searchParamms = new URLSearchParams(location.search);
+
+    let filterValue = searchParamms.getAll(sectionId);
+
+    if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
+      filterValue = filterValue[0].split(",").filter((item) => item !== value);
+
+      if (filterValue.length === 0) {
+        searchParamms.delete(sectionId);
+        console.log("yes Delete");
+      }
+      console.log("includes , ", value, sectionId, filterValue);
+    } else {
+      filterValue.push(value);
+    }
+
+    if (filterValue.length > 0) {
+      searchParamms.set(sectionId, filterValue.join(","));
+    }
+    const query = searchParamms.toString();
+    navigate({ search: `?${query}` });
+  };
+
+  const handleRadioFilterChange = (e, sectionId) => {
+    const searchParamms = new URLSearchParams(location.search);
+
+    searchParamms.set(sectionId, e.target.value);
+    const query = searchParamms.toString();
+    navigate({ search: `?${query}` });
+  };
 
   return (
     <div className="bg-white">
@@ -71,19 +113,6 @@ export default function Products() {
 
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
-                    {/* <h3 className="sr-only">Categories</h3>
-                    <ul
-                      // role="list"
-                      className="px-2 py-3 font-medium text-gray-900">
-                      {subCategories.map((category) => (
-                        <li key={category.name}>
-                          <a href={category.href} className="block px-2 py-3">
-                            {category.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul> */}
-
                     {filters.map((section) => (
                       <Disclosure
                         as="div"
@@ -118,6 +147,9 @@ export default function Products() {
                                     key={option.value}
                                     className="flex items-center">
                                     <input
+                                      onChange={() =>
+                                        handleFilter(option, section.id)
+                                      }
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
@@ -219,17 +251,10 @@ export default function Products() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
               {/* Filters */}
               <form className="hidden lg:block">
-                {/* <h3 className="sr-only">Categories</h3>
-                <ul
-                  // role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul> */}
-
+                <div className="flex justify-between items-center py-10">
+                  <h1 className="text-lg opacity-50 font-bold">Filters</h1>
+                  <FilterListIcon />
+                </div>
                 {filters.map((section) => (
                   <Disclosure
                     as="div"
@@ -264,6 +289,10 @@ export default function Products() {
                                 key={option.value}
                                 className="flex items-center">
                                 <input
+                                  //mainfunc
+                                  onChange={() =>
+                                    handleFilter(option.value, section.id)
+                                  }
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
@@ -278,6 +307,63 @@ export default function Products() {
                                 </label>
                               </div>
                             ))}
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ))}
+                {singleFilter.map((section) => (
+                  <Disclosure
+                    as="div"
+                    key={section.id}
+                    className="border-b border-gray-200 py-6">
+                    {({ open }) => (
+                      <>
+                        <h3 className="-my-3 flow-root">
+                          <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                            <FormLabel
+                              className="font-medium text-gray-900"
+                              id="demo-radio-buttons-group-label"
+                              sx={{ color: "black" }}>
+                              {section.name}
+                            </FormLabel>
+                            <span className="ml-6 flex items-center">
+                              {open ? (
+                                <MinusIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              ) : (
+                                <PlusIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              )}
+                            </span>
+                          </Disclosure.Button>
+                        </h3>
+                        <Disclosure.Panel className="pt-6">
+                          <div className="space-y-4">
+                            <FormControl>
+                              <RadioGroup
+                                aria-labelledby="demo-radio-buttons-group-label"
+                                defaultValue="female"
+                                name="radio-buttons-group">
+                                {section.options.map((option, optionIdx) => (
+                                  <>
+                                    <FormControlLabel
+                                      onChange={(e) =>
+                                        handleRadioFilterChange(e, section.id)
+                                      }
+                                      value={option.value}
+                                      control={<Radio />}
+                                      label={option.label}
+                                    />
+                                  </>
+                                ))}
+                              </RadioGroup>
+                            </FormControl>
                           </div>
                         </Disclosure.Panel>
                       </>
