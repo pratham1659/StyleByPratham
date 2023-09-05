@@ -1,4 +1,6 @@
-package com.stylebypratham.model;
+package com.stylebypratham.backendspring.model;
+
+import jakarta.persistence.Entity;
 
 
 public class Size {

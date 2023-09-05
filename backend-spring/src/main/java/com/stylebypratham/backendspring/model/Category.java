@@ -1,13 +1,16 @@
-package com.stylebypratham.model;
+package com.stylebypratham.backendspring.model;
+
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "categories")
 public class Category {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -33,13 +36,6 @@ public class Category {
         this.level = level;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -63,5 +59,13 @@ public class Category {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

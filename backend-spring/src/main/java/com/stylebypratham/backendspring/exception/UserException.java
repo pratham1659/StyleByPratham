@@ -1,4 +1,4 @@
-package com.stylebypratham.exception;
+package com.stylebypratham.backendspring.exception;
 
 public class UserException extends Exception {
 

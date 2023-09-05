@@ -1,6 +1,4 @@
-package com.stylebypratham.model;
-
-
+package com.stylebypratham.backendspring.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -32,6 +30,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> address = new ArrayList<>();
 
+    @Embedded
     @ElementCollection
     @CollectionTable(name="paymentInformation", joinColumns = @JoinColumn(name = "user_id"))
     private List<PaymentInformation> paymentInformation = new ArrayList<>();

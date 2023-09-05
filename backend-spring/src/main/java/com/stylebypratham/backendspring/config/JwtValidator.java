@@ -1,4 +1,4 @@
-package com.stylebypratham.config;
+package com.stylebypratham.backendspring.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -12,7 +12,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -26,6 +25,7 @@ public class JwtValidator extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String jwt = request.getHeader(JwtConstant.JWT_HEADER);
+        System.out.println("jwt -------- "+jwt);
 
         if(jwt != null){
 
@@ -47,14 +47,8 @@ public class JwtValidator extends OncePerRequestFilter {
             }catch (Exception e){
 
                 throw new BadCredentialsException("invalid token.... from JWT Validator");
-
             }
         }
-
         filterChain.doFilter(request, response);
-
-
     }
-
-
 }

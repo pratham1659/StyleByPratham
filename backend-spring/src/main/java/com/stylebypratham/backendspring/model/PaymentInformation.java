@@ -1,6 +1,4 @@
-package com.stylebypratham.model;
-
-
+package com.stylebypratham.backendspring.model;
 import jakarta.persistence.Column;
 
 public class PaymentInformation {

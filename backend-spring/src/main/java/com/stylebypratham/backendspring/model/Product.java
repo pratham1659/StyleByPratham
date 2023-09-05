@@ -1,7 +1,6 @@
-package com.stylebypratham.model;
+package com.stylebypratham.backendspring.model;
 
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -41,6 +40,7 @@ public class Product {
     private String color;
 
     @Embedded
+    @ElementCollection
     @Column(name = "size")
     private Set<Size> sizes = new HashSet<>();
 

@@ -1,4 +1,5 @@
-package com.stylebypratham.model;
+package com.stylebypratham.backendspring.model;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
