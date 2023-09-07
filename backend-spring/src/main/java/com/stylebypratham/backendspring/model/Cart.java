@@ -17,6 +17,7 @@ public class Cart {
 //    @Column(name = "cart_items")
 //    private Set<CartItem> cartItems = new HashSet<>();
 
+
     @Column(name = "total_price")
     private double totalPrice;
 
