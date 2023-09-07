@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomerUserServiceImplementation  implements UserDetailsService {
 
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public CustomerUserServiceImplementation(UserRepository userRepository){
 

@@ -62,7 +62,7 @@ public class Product {
 
     private LocalDateTime createdAt;
 
-    public Product(){
+    public Product() {
 
     }
 

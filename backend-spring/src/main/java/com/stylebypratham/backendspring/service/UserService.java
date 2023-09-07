@@ -3,7 +3,6 @@ package com.stylebypratham.backendspring.service;
 
 import com.stylebypratham.backendspring.exception.UserException;
 import com.stylebypratham.backendspring.model.User;
-import jdk.jshell.spi.ExecutionControl;
 
 public interface UserService {
 
