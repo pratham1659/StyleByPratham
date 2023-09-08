@@ -36,7 +36,7 @@ public class Address {
     private String mobile;
 
     public Address(){
-        //TODO
+        //Empty Constructor
     }
 
     public Address(Long id, String firstName, String lastName, String streetAddress, String city, String state, String zipCode, User user, String mobile) {

@@ -4,13 +4,11 @@ package com.stylebypratham.backendspring.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "categories")
 public class Category {
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

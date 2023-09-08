@@ -8,6 +8,7 @@ import com.stylebypratham.backendspring.request.LoginRequest;
 import com.stylebypratham.backendspring.response.AuthResponse;
 import com.stylebypratham.backendspring.service.CartService;
 import com.stylebypratham.backendspring.service.CustomerUserServiceImplementation;
+
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/auth")

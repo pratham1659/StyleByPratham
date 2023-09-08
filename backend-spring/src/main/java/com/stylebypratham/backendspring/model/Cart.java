@@ -31,7 +31,7 @@ public class Cart {
     private int discounts;
 
     public Cart() {
-        // TODO Auto-generated constructor stub
+        // Empty Constructor
     }
 
     public Cart(Long id, User user, Set<CartItem> cartItems, double totalPrice, int totalItem, int totalDiscountedPrice, int discounts) {
