@@ -27,7 +27,8 @@ public class OrderServiceImplementation implements OrderService {
 
     public OrderServiceImplementation(OrderRepository orderRepository,CartService cartService,
                                       AddressRepository addressRepository,UserRepository userRepository,
-                                      OrderItemService orderItemService,OrderItemRepository orderItemRepository) {
+//                                      OrderItemService orderItemService,
+                                      OrderItemRepository orderItemRepository) {
         this.orderRepository=orderRepository;
         this.cartService=cartService;
         this.addressRepository=addressRepository;
@@ -41,7 +42,7 @@ public class OrderServiceImplementation implements OrderService {
 
         shippAddress.setUser(user);
         Address address= addressRepository.save(shippAddress);
-        user.getAddresses().add(address);
+//        user.getAddresses().add(address);
         userRepository.save(user);
 
         Cart cart=cartService.findUserCart(user.getId());

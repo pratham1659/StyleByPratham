@@ -4,8 +4,10 @@ package com.stylebypratham.backendspring.controller;
 import com.stylebypratham.backendspring.exception.UserException;
 import com.stylebypratham.backendspring.model.User;
 import com.stylebypratham.backendspring.service.UserService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
