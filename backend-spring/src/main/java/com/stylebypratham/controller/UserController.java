@@ -14,19 +14,19 @@ import com.stylebypratham.service.UserService;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-	
-	private UserService userService;
-	
-	public UserController(UserService userService) {
-		this.userService=userService;
-	}
-	
-	@GetMapping("/profile")
-	public ResponseEntity<User> getUserProfileHandler(@RequestHeader("Authorization") String jwt) throws UserException{
 
-		System.out.println("/api/users/profile");
-		User user=userService.findUserProfileByJwt(jwt);
-		return new ResponseEntity<User>(user,HttpStatus.ACCEPTED);
-	}
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<User> getUserProfileHandler(@RequestHeader("Authorization") String jwt) throws UserException {
+
+        System.out.println("/api/users/profile");
+        User user = userService.findUserProfileByJwt(jwt);
+        return new ResponseEntity<User>(user, HttpStatus.ACCEPTED);
+    }
 
 }
