@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,11 +26,11 @@ public class Reviews {
 
     private LocalDateTime createdAt;
 
-    public Reviews(){
+    public Review(){
 
     }
 
-    public Reviews(Long id, String review, Product product, User user, LocalDateTime createdAt) {
+    public Review(Long id, String review, Product product, User user, LocalDateTime createdAt) {
         this.id = id;
         this.review = review;
         this.product = product;

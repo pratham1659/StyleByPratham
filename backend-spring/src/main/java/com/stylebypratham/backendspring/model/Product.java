@@ -40,7 +40,6 @@ public class Product {
     private String color;
 
     @Embedded
-    @ElementCollection
     @Column(name = "size")
     private Set<Size> sizes = new HashSet<>();
 
@@ -48,10 +47,10 @@ public class Product {
     private String imageUrl;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ratings> ratings = new ArrayList<>();
+    private List<Rating> ratings = new ArrayList<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reviews> reviews = new ArrayList<>();
+    private List<Review> reviews = new ArrayList<>();
 
     @Column(name = "num_ratings")
     private int numRatings;
@@ -66,7 +65,7 @@ public class Product {
 
     }
 
-    public Product(Long id, String title, String description, int price, int discountedPrice, int discountedPercent, int quantity, String brand, String color, Set<Size> sizes, String imageUrl, List<Ratings> ratings, List<Reviews> reviews, int numRatings, Category category, LocalDateTime createdAt) {
+    public Product(Long id, String title, String description, int price, int discountedPrice, int discountedPercent, int quantity, String brand, String color, Set<Size> sizes, String imageUrl, List<Rating> ratings, List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -173,19 +172,19 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public List<Ratings> getRatings() {
+    public List<Rating> getRatings() {
         return ratings;
     }
 
-    public void setRatings(List<Ratings> ratings) {
+    public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
     }
 
-    public List<Reviews> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<Reviews> reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
 
