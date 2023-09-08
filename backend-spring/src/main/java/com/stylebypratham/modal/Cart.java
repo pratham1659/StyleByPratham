@@ -31,80 +31,81 @@ public class Cart {
 
     @Column(name = "total_price")
     private double totalPrice;
-    
-    @Column(name="total_item")
+
+    @Column(name = "total_item")
     private int totalItem;
-    
+
     private int totalDiscountedPrice;
-    
-    private int discounte;
-    
-	public Cart() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Cart(Long id, User user, Set<CartItem> cartItems, double totalPrice, int totalItem) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.cartItems = cartItems;
-		this.totalPrice = totalPrice;
-		this.totalItem = totalItem;
-	}
+    private int discounts;
 
-	public int getTotalDiscountedPrice() {
-		return totalDiscountedPrice;
-	}
+    public Cart() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public void setTotalDiscountedPrice(int totalDiscountedPrice) {
-		this.totalDiscountedPrice = totalDiscountedPrice;
-	}
-	public int getDiscounte() {
-		return discounte;
-	}
+    public Cart(Long id, User user, Set<CartItem> cartItems, double totalPrice, int totalItem) {
+        super();
+        this.id = id;
+        this.user = user;
+        this.cartItems = cartItems;
+        this.totalPrice = totalPrice;
+        this.totalItem = totalItem;
+    }
 
-	public void setDiscounte(int discounte) {
-		this.discounte = discounte;
-	}
+    public int getTotalDiscountedPrice() {
+        return totalDiscountedPrice;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setTotalDiscountedPrice(int totalDiscountedPrice) {
+        this.totalDiscountedPrice = totalDiscountedPrice;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public int getDiscounts() {
+        return discounts;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setDiscounts(int discounts) {
+        this.discounts = discounts;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Set<CartItem> getCartItems() {
-		return cartItems;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setCartItems(Set<CartItem> cartItems) {
-		this.cartItems = cartItems;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public double getTotalPrice() {
-		return totalPrice;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+    public Set<CartItem> getCartItems() {
+        return cartItems;
+    }
 
-	public int getTotalItem() {
-		return totalItem;
-	}
+    public void setCartItems(Set<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
 
-	public void setTotalItem(int totalItem) {
-		this.totalItem = totalItem;
-	}
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getTotalItem() {
+        return totalItem;
+    }
+
+    public void setTotalItem(int totalItem) {
+        this.totalItem = totalItem;
+    }
 
 }

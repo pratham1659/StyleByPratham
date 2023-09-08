@@ -1,7 +1,6 @@
 package com.stylebypratham.modal;
 
 
-
 import com.stylebypratham.user.domain.OrderStatus;
 
 import jakarta.persistence.CascadeType;
@@ -28,9 +27,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="order_id")
+    @Column(name = "order_id")
     private String orderId;
-  
+
     @ManyToOne
     private User user;
 
@@ -45,137 +44,135 @@ public class Order {
     private Address shippingAddress;
 
     @Embedded
-    private PaymentDetails paymentDetails=new PaymentDetails();
+    private PaymentDetails paymentDetails = new PaymentDetails();
 
     private double totalPrice;
-    
+
     private Integer totalDiscountedPrice;
-    
-    private Integer discounte;
+
+    private Integer discounts;
 
     private OrderStatus orderStatus;
-    
+
     private int totalItem;
-    
+
     private LocalDateTime createdAt;
 
     public Order() {
-		
-	}
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
+    }
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-	public int getTotalItem() {
-		return totalItem;
-	}
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public void setTotalItem(int totalItem) {
-		this.totalItem = totalItem;
-	}
+    public int getTotalItem() {
+        return totalItem;
+    }
 
-	public Integer getDiscounte() {
-		return discounte;
-	}
+    public void setTotalItem(int totalItem) {
+        this.totalItem = totalItem;
+    }
 
-	public void setDiscounte(Integer discounte) {
-		this.discounte = discounte;
-	}
+    public Integer getDiscounts() {
+        return discounts;
+    }
 
-	public Integer getTotalDiscountedPrice() {
-		return totalDiscountedPrice;
-	}
+    public void setDiscounts(Integer discounts) {
+        this.discounts = discounts;
+    }
 
-	public void setTotalDiscountedPrice(Integer totalDiscountedPrice) {
-		this.totalDiscountedPrice = totalDiscountedPrice;
-	}
+    public Integer getTotalDiscountedPrice() {
+        return totalDiscountedPrice;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setTotalDiscountedPrice(Integer totalDiscountedPrice) {
+        this.totalDiscountedPrice = totalDiscountedPrice;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public List<OrderItem> getOrderItems() {
-		return orderItems;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public void setOrderItems(List<OrderItem> orderItems) {
-		this.orderItems = orderItems;
-	}
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
 
-	public LocalDateTime getOrderDate() {
-		return orderDate;
-	}
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 
-	public void setOrderDate(LocalDateTime orderDate) {
-		this.orderDate = orderDate;
-	}
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
 
-	public LocalDateTime getDeliveryDate() {
-		return deliveryDate;
-	}
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
 
-	public void setDeliveryDate(LocalDateTime deliveryDate) {
-		this.deliveryDate = deliveryDate;
-	}
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
 
-	public Address getShippingAddress() {
-		return shippingAddress;
-	}
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
 
-	public void setShippingAddress(Address shippingAddress) {
-		this.shippingAddress = shippingAddress;
-	}
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
 
-	public PaymentDetails getPaymentDetails() {
-		return paymentDetails;
-	}
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
 
-	public void setPaymentDetails(PaymentDetails paymentDetails) {
-		this.paymentDetails = paymentDetails;
-	}
+    public PaymentDetails getPaymentDetails() {
+        return paymentDetails;
+    }
 
-	public double getTotalPrice() {
-		return totalPrice;
-	}
+    public void setPaymentDetails(PaymentDetails paymentDetails) {
+        this.paymentDetails = paymentDetails;
+    }
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
-	}
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
 
-	public String getOrderId() {
-		return orderId;
-	}
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
+    public String getOrderId() {
+        return orderId;
+    }
 
-    // constructors, getters and setters
-    
-    
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+
 }

@@ -3,44 +3,44 @@ package com.stylebypratham.exception;
 import java.time.LocalDateTime;
 
 public class ErrorDetails {
-	
-	private String error;
-	private String details;
-	private LocalDateTime timestamp;
 
-	public ErrorDetails() {
-		//Empty Constructor
-	}
+    private String error;
+    private String details;
+    private LocalDateTime timestamp;
 
-	public ErrorDetails(String error, String details, LocalDateTime timestamp) {
-		super();
-		this.error = error;
-		this.details = details;
-		this.timestamp = timestamp;
-	}
+    public ErrorDetails() {
+        //Empty Constructor
+    }
 
-	public String getError() {
-		return error;
-	}
+    public ErrorDetails(String error, String details, LocalDateTime timestamp) {
+        super();
+        this.error = error;
+        this.details = details;
+        this.timestamp = timestamp;
+    }
 
-	public void setError(String error) {
-		this.error = error;
-	}
+    public String getError() {
+        return error;
+    }
 
-	public String getDetails() {
-		return details;
-	}
+    public void setError(String error) {
+        this.error = error;
+    }
 
-	public void setDetails(String details) {
-		this.details = details;
-	}
+    public String getDetails() {
+        return details;
+    }
 
-	public LocalDateTime getTimestamp() {
-		return timestamp;
-	}
+    public void setDetails(String details) {
+        this.details = details;
+    }
 
-	public void setTimestamp(LocalDateTime timestamp) {
-		this.timestamp = timestamp;
-	}
-	
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
 }

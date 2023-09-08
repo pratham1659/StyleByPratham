@@ -1,9 +1,9 @@
 package com.stylebypratham.exception;
 
-public class ProductException extends Exception{
-	
-	public ProductException(String message) {
-		super(message);
-	}
+public class ProductException extends Exception {
+
+    public ProductException(String message) {
+        super(message);
+    }
 
 }

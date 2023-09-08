@@ -13,123 +13,123 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class OrderItem {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@JsonIgnore
-	@ManyToOne
-	private Order order;
-	
-	@ManyToOne
-	private Product product;
-	
-	private String size;
-	
-	private int quantity;
-	
-	private Integer price;
-	
-	private Integer discountedPrice;
-	
-	private Long userId;
-	
-	private LocalDateTime deliveryDate;
-	
-	public OrderItem() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public Integer getDiscountedPrice() {
-		return discountedPrice;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public void setDiscountedPrice(Integer discountedPrice) {
-		this.discountedPrice = discountedPrice;
-	}
+    @JsonIgnore
+    @ManyToOne
+    private Order order;
 
-	public LocalDateTime getDeliveryDate() {
-		return deliveryDate;
-	}
+    @ManyToOne
+    private Product product;
 
-	public void setDeliveryDate(LocalDateTime deliveryDate) {
-		this.deliveryDate = deliveryDate;
-	}
+    private String size;
 
-	public Long getId() {
-		return id;
-	}
+    private int quantity;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private Integer price;
 
-	public Order getOrder() {
-		return order;
-	}
+    private Integer discountedPrice;
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+    private Long userId;
 
-	public Product getProduct() {
-		return product;
-	}
+    private LocalDateTime deliveryDate;
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public OrderItem() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public String getSize() {
-		return size;
-	}
+    public Integer getDiscountedPrice() {
+        return discountedPrice;
+    }
 
-	public void setSize(String size) {
-		this.size = size;
-	}
+    public void setDiscountedPrice(Integer discountedPrice) {
+        this.discountedPrice = discountedPrice;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
 
-	public Integer getPrice() {
-		return price;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Long getUserId() {
-		return userId;
-	}
+    public Order getOrder() {
+        return order;
+    }
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, order, price, product, quantity, size, userId);
-	}
+    public Product getProduct() {
+        return product;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderItem other = (OrderItem) obj;
-		return Objects.equals(id, other.id) && Objects.equals(order, other.order) && Objects.equals(price, other.price)
-				&& Objects.equals(product, other.product) && quantity == other.quantity
-				&& Objects.equals(size, other.size) && Objects.equals(userId, other.userId);
-	}
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, order, price, product, quantity, size, userId);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        OrderItem other = (OrderItem) obj;
+        return Objects.equals(id, other.id) && Objects.equals(order, other.order) && Objects.equals(price, other.price)
+                && Objects.equals(product, other.product) && quantity == other.quantity
+                && Objects.equals(size, other.size) && Objects.equals(userId, other.userId);
+    }
 
 }

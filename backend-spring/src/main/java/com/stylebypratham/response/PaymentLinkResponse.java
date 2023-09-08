@@ -6,7 +6,7 @@ public class PaymentLinkResponse {
 	private String payment_link_id;
 	
 	public PaymentLinkResponse() {
-		// TODO Auto-generated constructor stub
+		// Empty Constructor
 	}
 	
 	public PaymentLinkResponse(String payment_link_url, String payment_link_id) {
