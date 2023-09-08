@@ -1,10 +1,9 @@
 package com.stylebypratham.backendspring.service;
 
 import com.stylebypratham.backendspring.exception.OrderException;
-import com.stylebypratham.backendspring.model.Address;
-import com.stylebypratham.backendspring.model.Order;
-import com.stylebypratham.backendspring.model.OrderItem;
-import com.stylebypratham.backendspring.model.User;
+import com.stylebypratham.backendspring.model.*;
+import com.stylebypratham.backendspring.repository.AddressRepository;
+import com.stylebypratham.backendspring.repository.OrderItemRepository;
 import com.stylebypratham.backendspring.repository.OrderRepository;
 import com.stylebypratham.backendspring.repository.UserRepository;
 import com.stylebypratham.backendspring.user.domain.OrderStatus;
@@ -12,6 +11,7 @@ import com.stylebypratham.backendspring.user.domain.PaymentStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,24 +44,24 @@ public class OrderServiceImplementation implements OrderService {
         user.getAddresses().add(address);
         userRepository.save(user);
 
-//        Cart cart=cartService.findUserCart(user.getId());
-//        List<OrderItem> orderItems=new ArrayList<>();
+        Cart cart=cartService.findUserCart(user.getId());
+        List<OrderItem> orderItems=new ArrayList<>();
 
-//        for(CartItem item: cart.getCartItems()) {
-//            OrderItem orderItem=new OrderItem();
-//
-//            orderItem.setPrice(item.getPrice());
-//            orderItem.setProduct(item.getProduct());
-//            orderItem.setQuantity(item.getQuantity());
-//            orderItem.setSize(item.getSize());
-//            orderItem.setUserId(item.getUserId());
-//            orderItem.setDiscountedPrice(item.getDiscountedPrice());
-//
-//
-//            OrderItem createdOrderItem=orderItemRepository.save(orderItem);
-//
-//            orderItems.add(createdOrderItem);
-//        }
+        for(CartItem item: cart.getCartItems()) {
+            OrderItem orderItem=new OrderItem();
+
+            orderItem.setPrice(item.getPrice());
+            orderItem.setProduct(item.getProduct());
+            orderItem.setQuantity(item.getQuantity());
+            orderItem.setSize(item.getSize());
+            orderItem.setUserId(item.getUserId());
+            orderItem.setDiscountedPrice(item.getDiscountedPrice());
+
+
+            OrderItem createdOrderItem=orderItemRepository.save(orderItem);
+
+            orderItems.add(createdOrderItem);
+        }
 
 
         Order createdOrder=new Order();
@@ -69,7 +69,7 @@ public class OrderServiceImplementation implements OrderService {
         createdOrder.setOrderItems(orderItems);
         createdOrder.setTotalPrice(cart.getTotalPrice());
         createdOrder.setTotalDiscountedPrice(cart.getTotalDiscountedPrice());
-        createdOrder.setDiscounte(cart.getDiscounte());
+        createdOrder.setDiscounts(cart.getDiscounts());
         createdOrder.setTotalItem(cart.getTotalItem());
 
         createdOrder.setShippingAddress(address);
